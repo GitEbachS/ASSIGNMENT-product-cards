@@ -1,3 +1,47 @@
 body {
   background-color: aliceblue;
 }
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+img {
+  width: 200px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+section {
+  width: 30%;
+}
+.box {
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid lightblue;
+  text-align: center;
+  background-color: rgb(240, 236, 231);
+  
+}
+h3 {
+  font-style: bold;
+}
+section > p {
+  text-align: justify;
+}
+.middle {
+  background-color: gray;
+  color: yellow;
+}
+h2 {
+  margin: 10px 0px 20px 0px;
+}
+.image1 {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.image2 {
+  position: absolute;
+  top: 30px;
+  left: 30x;
+}
