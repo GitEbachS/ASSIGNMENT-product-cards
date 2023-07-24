@@ -112,8 +112,94 @@ const cardsOnDom = (array) => {
   renderToDom("#app", domString);
 }
 
-const startApp = () => {
-  cardsOnDom(rugs);
+const rugForm = () => {
+  let domString = "";
+  domString += `
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">ImageUrl:</label>
+      <input type="Url" class="form-control" id="image" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <input type="text" class="form-control" id="description" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="available">
+      <label class="form-check-label" for="available">Available</label>
+    </div>
+    <div class="mb-3">
+      <label for="size" class="form-label">Size:</label>
+      <input type="text" class="form-control" id="size" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="weight" class="form-label">Weight:</label>
+      <input type="text" class="form-control" id="weight" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Availability Date:</label>
+      <input type="text" class="form-control" id="date" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="pricing1" class="form-label">Price:</label>
+      <input type="text" class="form-control" id="pricing1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="pricing2" class="form-label">Price:</label>
+      <input type="text" class="form-control" id="pricing2" aria-describedby="emailHelp">
+    </div>
+  <div class="mb-3">
+    <label for="pricing3" class="form-label">Price:</label>
+    <input type="text" class="form-control" id="pricing3" aria-describedby="emailHelp">
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>`;
+
+ renderToDom("#formContainer", domString)
+
+};
+
+const form = document.querySelector("#formContainer")
+
+const formButton = document.querySelector("#formBtn")
+
+
+
+const createRugs = (e) => {
+  e.preventDefault();
+
+  const rugObj = {
+    id: rugs.length + 1,
+    name: document.querySelector('#name').value,
+    description: document.querySelector('#description').value,
+    image: document.querySelector('#image').value,
+    available: document.querySelector('#available').checked,
+    size: document.querySelector('#size').value,
+    weight: document.querySelector('#weight').value,
+    date: document.querySelector('#date').value,
+    pricing1: document.querySelector('#pricing1').value,
+    pricing2: document.querySelector('#pricing2').value,
+    pricing3: document.querySelector('#pricing3').value
+  }
+  rugs.push(rugObj)
+  cardsOnDom(rugs)
+  form.reset();
 }
+
+form.addEventListener('submit', createRugs);
+
+const eventListeners = () => {
+  formButton.addEventListener('click', () => {
+    rugForm();
+  })
+}
+
+const startApp = () => {
+  cardsOnDom(rugs)
+  eventListeners();
+}
+
 
 startApp();
